@@ -3,22 +3,9 @@ let selectedCourse = {};
 
 // Safari sucks.
 
-const supportBigInt = typeof BigInt !== 'undefined';
-if (!supportBigInt) BigInt = JSBI.BigInt;
-
-function parseBigInt(value, radix = 36) {
-    const add = (a, b) => supportBigInt ? a + b : JSBI.add(a, b);
-    const mul = (a, b) => supportBigInt ? a * b : JSBI.multiply(a, b);
-    return [...value.toString()]
-        .reduce((r, v) => add(
-            mul(r, BigInt(radix)),
-            BigInt(parseInt(v, radix))
-        ), BigInt(0));
-}
-
 function loadFromShareLink() {
     const shareKey = new URLSearchParams(location.search).get("share");
-    const courseIds = parseBigInt(shareKey).toString().match(/.{1,4}/g);
+    const courseIds = shareKey.split(",");
     return courseIds.reduce((a, b) => (a[b] = true, a), {});
 }
 
@@ -37,18 +24,18 @@ if (location.search.includes("share=")) {
 }
 
 // Render timetable.
-Object.keys(TIME_MAPPING).forEach(period => {
+ORDERS.forEach(period => {
     const div = document.createElement("div");
     div.textContent = `${period} / ${TIME_MAPPING[period]}`;
     document.querySelector(".time-interval").appendChild(div);
 });
 
-Object.keys(TIME_MAPPING).forEach(period => {
-    for (let day = 1; day <= 7; ++day) {
+ORDERS.forEach(period => {
+    DAYS.forEach(day => {
         const div = document.createElement("div");
         div.id = `${day}${period}`;
         document.querySelector('.content').appendChild(div);
-    }
+    }); 
 });
 
 // Fetch course data.
@@ -114,9 +101,11 @@ function openModal(courseId) {
     fields[1].textContent = data.credit;
     fields[2].textContent = data.teacher;
     fields[3].textContent = data.time;
+    fields[4].textContent = data.room;
 
     modal.querySelector('.card-header-title').textContent = data.name;
-    modal.querySelector('#outline').href = `https://timetable.nctu.edu.tw/?r=main/crsoutline&Acy=${YEAR}&Sem=${SEMESTER}&CrsNo=${courseId}&lang=zh-tw`;
+    // modal.querySelector('#outline').href = `https://timetable.nctu.edu.tw/?r=main/crsoutline&Acy=${YEAR}&Sem=${SEMESTER}&CrsNo=${courseId}&lang=zh-tw`;
+    modal.querySelector('#outline').href = `https://www.ccxp.nthu.edu.tw/ccxp/INQUIRE/JH/6/6.2/6.2.9/JH629001.php`;
 }
 
 function appendCourseElement(course, search = false) {
@@ -135,9 +124,11 @@ function search(searchTerm) {
     if (!searchTerm) return [];
 
     const regex = RegExp(searchTerm, 'i');
+    const regex2 = RegExp(searchTerm.replace(/\ /g, ''), 'i');
     const result = Object.values(courseData)
         .filter(course => (
             course.id.match(regex) ||
+            course.id.match(regex2) ||
             course.teacher.match(regex) ||
             course.name.match(regex)
         ))
@@ -178,7 +169,7 @@ function toggleCourse(courseId) {
 }
 
 function parseTime(timeCode) {
-    const timeList = timeCode.match(/[1-7][A-Z]+/g);
+    const timeList = timeCode.match(/[MTWRFS][1-9nabc]/g);
     const result = timeList.map(
         code => [...code].map(char => `${code[0]}${char}`).slice(1)
     ).flat();
@@ -218,7 +209,7 @@ document.getElementById("import").onclick = () => {
 }
 
 document.getElementById("copy-link").onclick = () => {
-    const shareKey = BigInt(Object.keys(selectedCourse).join('')).toString(36);
+    const shareKey = Object.keys(selectedCourse).join(',');
 
     const link = `${APP_URL}?share=${shareKey}`;
     const copy = document.createElement("div");
