@@ -239,6 +239,10 @@ document.getElementById("copy-link").onclick = () => {
     document.body.removeChild(copy);
 }
 
+document.querySelector('.modal-background').onclick =
+    document.querySelector('.card-header-icon').onclick =
+    () => document.querySelector('.modal').classList.remove('is-active');
+
 document.getElementById("download-photo").onclick = () => {
     var scale = 2;
     const domNode = document.getElementsByClassName("timetable")[0];
