@@ -239,6 +239,21 @@ document.getElementById("copy-link").onclick = () => {
     document.body.removeChild(copy);
 }
 
-document.querySelector('.modal-background').onclick =
-    document.querySelector('.card-header-icon').onclick =
-    () => document.querySelector('.modal').classList.remove('is-active');
+document.getElementById("download-photo").onclick = () => {
+    var scale = 2;
+    const domNode = document.getElementsByClassName("timetable")[0];
+    domtoimage.toPng(domNode, {
+        bgcolor: "#ffffff",
+        width: domNode.clientWidth * scale,
+        height: domNode.clientHeight * scale,
+        style: {
+            transform: 'scale('+scale+')',
+            transformOrigin: 'top left'
+        }
+    }).then(function (dataUrl) {
+        var link = document.createElement('a');
+        link.download = '課程表.png';
+        link.href = dataUrl;
+        link.click();
+    });
+}
