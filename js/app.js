@@ -6,7 +6,7 @@ let selectedCourse = {};
 function loadFromShareLink() {
     const shareKey = new URLSearchParams(location.search).get("share");
     const courseIds = shareKey.split(",");
-    return courseIds.reduce((a, b) => (a[b] = true, a), {});
+    return courseIds.reduce((a, b) => (a[(b.indexOf(YS) === -1 ? YS + b : b)] = true, a), {});
 }
 
 function loadFromLocalStorage() {
@@ -209,7 +209,8 @@ document.getElementById("import").onclick = () => {
 }
 
 document.getElementById("copy-link").onclick = () => {
-    const shareKey = Object.keys(selectedCourse).join(',');
+    const joined = Object.keys(selectedCourse).join(',');
+    const shareKey = joined.replace(new RegExp(YS, "g"), "");
 
     const link = `${APP_URL}?share=${shareKey}`;
     const copy = document.createElement("div");

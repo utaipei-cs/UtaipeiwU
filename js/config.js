@@ -16,6 +16,7 @@ const TIME_MAPPING = {
 const ORDERS = ['1', '2', '3', '4', 'n', '5', '6', '7', '8', '9', 'a', 'b', 'c'];
 const DAYS = ['M', 'T', 'W', 'R', 'F', 'S'];
 
-const YEAR = '109', SEMESTER = '1';
+const YEAR = '109', SEMESTER = '10';
 
 const APP_URL = `${location.protocol}//${location.host}${location.pathname}`;
+const YS = YEAR + SEMESTER;
