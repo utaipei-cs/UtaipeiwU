@@ -3,10 +3,24 @@ let selectedCourse = {};
 
 // Safari sucks.
 
+const supportBigInt = typeof BigInt !== 'undefined';
+if (!supportBigInt) BigInt = JSBI.BigInt;
+
+function parseBigInt(value, radix = 36) {
+    const add = (a, b) => supportBigInt ? a + b : JSBI.add(a, b);
+    const mul = (a, b) => supportBigInt ? a * b : JSBI.multiply(a, b);
+    return [...value.toString()]
+        .reduce((r, v) => add(
+            mul(r, BigInt(radix)),
+            BigInt(parseInt(v, radix))
+        ), BigInt(0));
+}
+
 function loadFromShareLink() {
     const shareKey = new URLSearchParams(location.search).get("share");
-    const courseIds = shareKey.split(",");
-    return courseIds.reduce((a, b) => (a[(b.indexOf(YS) === -1 ? YS + b : b)] = true, a), {});
+    const courseUnits = shareKey.split(",");
+    const courseNumbers = parseBigInt(courseUnits[courseUnits.length - 1]).toString().match(/.{6}/g);
+    return courseNumbers.reduce((a, b, c) => (a[`${YS}${courseUnits[c]}${b}`] = true, a), {});
 }
 
 function loadFromLocalStorage() {
@@ -208,9 +222,14 @@ document.getElementById("import").onclick = () => {
     }
 }
 
+function getShareKey() {
+    const units = Object.keys(selectedCourse).reduce((a, b) => (a += (b.replace(/[0-9]/g, "") + ","), a), "");
+    const numbers = BigInt(Object.keys(selectedCourse).reduce((a, b) => (a += b.match(/\d+$/)[0], a), "")).toString(36);
+    return units + numbers;
+}
+
 document.getElementById("copy-link").onclick = () => {
-    const joined = Object.keys(selectedCourse).join(',');
-    const shareKey = joined.replace(new RegExp(YS, "g"), "");
+    const shareKey = getShareKey();
 
     const link = `${APP_URL}?share=${shareKey}`;
     const copy = document.createElement("div");
