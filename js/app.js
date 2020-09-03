@@ -275,8 +275,8 @@ document.getElementById("download-photo").onclick = () => {
     const domNode = document.getElementsByClassName("timetable")[0];
     domtoimage.toPng(domNode, {
         bgcolor: "#ffffff",
-        width: domNode.clientWidth * scale,
-        height: domNode.clientHeight * scale,
+        width: domNode.scrollWidth * scale,
+        height: domNode.scrollHeight * scale,
         style: {
             transform: 'scale('+scale+')',
             transformOrigin: 'top left'
