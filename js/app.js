@@ -18,7 +18,13 @@ function parseBigInt(value, radix = 36) {
 
 function loadFromShareLink() {
     const shareKey = new URLSearchParams(location.search).get("share");
-    const courseUnits = shareKey.split(",");
+    const rawCourseUnits = shareKey.split(",");
+    const courseUnits = rawCourseUnits.reduce((a, b) => {
+        const times = parseInt((b.match(/\d+/) || [1])[0]);
+        const unit = b.match(/[A-Z]+/);
+        a.push((unit === null ? b : Array(times).fill(unit[0])));
+        return a;
+    }, []).flat();
     const courseNumbers = parseBigInt(courseUnits[courseUnits.length - 1]).toString().match(/.{6}/g);
     return courseNumbers.reduce((a, b, c) => (a[`${YS}${courseUnits[c]}${b}`] = true, a), {});
 }
@@ -223,7 +229,8 @@ document.getElementById("import").onclick = () => {
 }
 
 function getShareKey() {
-    const units = Object.keys(selectedCourse).reduce((a, b) => (a += (b.replace(/[0-9]/g, "") + ","), a), "");
+    const units_cnt = Object.keys(selectedCourse).reduce((a, b) => (a[b.replace(/[0-9]/g, "")] = a[b.replace(/[0-9]/g, "")] + 1 || 1, a), {});
+    const units = Object.keys(units_cnt).reduce((a, b) => (a += `${(units_cnt[b] === 1 ? "" : units_cnt[b])}${b},`), "");
     const numbers = BigInt(Object.keys(selectedCourse).reduce((a, b) => (a += b.match(/\d+$/)[0], a), "")).toString(36);
     return units + numbers;
 }
