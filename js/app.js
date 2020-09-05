@@ -22,7 +22,9 @@ let department = {}
 
 let filter = {
     department: false,
-    departmentRegex: -1,
+    departmentId: -1,
+    period: false,
+    periodCodes: []
 };
 
 let config = {};
@@ -149,12 +151,27 @@ ORDERS.forEach(period => {
     row.appendChild(time);
     document.querySelector(".timetable tbody").appendChild(row);
     DAYS.forEach(day => {
+        const periodCode = `${day}${period}`;
         const block = document.createElement('td');
-        block.id = `${day}${period}`;
+        block.id = periodCode;
         if (day === "S")
             block.classList.add('weekend');
         if (isExtra)
             block.classList.add('extra');
+
+        const overlay = document.createElement("div");
+        overlay.className = "find-empty-overlay";
+        overlay.append(...['horizontal', 'vertical'].map(className => {
+            const div = document.createElement("div");
+            div.className = className;
+            div.dataset.periodCode = periodCode;
+            return div;
+        }));
+        overlay.onclick = () => {
+            const periodCode = overlay.parentNode.id;
+            togglePeriodFilter(periodCode);
+        };
+        block.appendChild(overlay);
         row.appendChild(block);
     });
 });
@@ -219,6 +236,27 @@ function setFilter(filterData) {
     renderSearchResult();
 }
 
+
+function togglePeriodFilter(periodCode) {
+    const periodCodes = new Set(filter.periodCodes);
+    periodCodes.has(periodCode) ?
+        periodCodes.delete(periodCode) :
+        periodCodes.add(periodCode);
+    setFilter({
+        period: periodCodes.size !== 0,
+        periodCodes: [...periodCodes]
+    });
+    document.getElementById("search-period").innerHTML = "";
+    document.getElementById("search-period").append(
+        ...[...periodCodes].map(code =>
+            createTag(code, 'is-info', elem => {
+                elem.remove();
+                togglePeriodFilter(code);
+            }))
+    );
+
+    document.getElementById(periodCode).querySelector('.find-empty-overlay').classList.toggle('selected');
+}
 
 function renderConfig(options) {
     const storedConfig = JSON.parse(localStorage.getItem("timetableConfig")) || {};
@@ -314,22 +352,21 @@ document.addEventListener("mouseover", function (event) {
     if (event.target.matches('.result .course, .result .course *')) {
         const courseId = getCourseIdFromElement(event.target);
         const result = parseTime(courseData[courseId].time);
+
         result.forEach(period => {
             const block = document.getElementById(period);
-            if (block.childElementCount)
-                block.firstElementChild.classList.add("has-background-danger", "has-text-white");
-            block.classList.add('has-background-info-light');
-        })
+            block.querySelector(".period:not(.preview)")?.classList.add("has-background-danger", "has-text-white");
+        });
+        renderPeriodBlock(courseData[courseId], true);
     }
 })
 
 document.addEventListener("mouseout", function (event) {
     if (event.target.matches('.result .course, .result .course *')) {
-        document.querySelectorAll('.timetable .has-background-info-light')
-            .forEach(elem => {
-                elem.classList.remove('has-background-info-light');
-                elem.firstElementChild?.classList.remove("has-background-danger", "has-text-white");
-            });
+        document.querySelectorAll('.timetable .period.preview')
+            .forEach(elem => elem.remove());
+        document.querySelectorAll(".timetable .period")
+            .forEach(elem => elem.classList.remove("has-background-danger", "has-text-white"))
     }
 })
 
@@ -350,51 +387,63 @@ function openModal(courseId) {
     modal.querySelector('#outline').href = `https://www.ccxp.nthu.edu.tw/ccxp/INQUIRE/JH/6/6.2/6.2.9/JH629001.php`;
 }
 
-function createTag(text, type) {
+function createTag(text, type, closeCallback) {
     const tag = document.createElement("span");
     tag.className = `tag is-rounded ${type}`;
     tag.textContent = text;
+    if (closeCallback) {
+        const close = document.createElement("button");
+        close.className = "delete is-small";
+        close.onclick = () => closeCallback(tag);
+        tag.appendChild(close);
+    }
     return tag;
 }
 
-function appendCourseElement(course, search = false) {
-    const template = document.importNode(document.getElementById("courseTemplate").content, true);
-    if (course.type < 3) {
+function appendCourseElement(courses, search = false) {
+    if (!Array.isArray(courses)) courses = [courses];
+
+    const fragment = document.createDocumentFragment();
+    courses.forEach(course => {
+        const template = document.importNode(document.getElementById("courseTemplate").content, true);
         template.getElementById("type").textContent = COURSE_TYPE[course.type];
-        const typeColor = course.type === 0 ? 'is-white' :
-            course.type === 1 ? 'is-danger' :
-                'is-primary';
-        template.getElementById("type").className = `tag is-rounded ${typeColor}`;
-    }
-    template.getElementById("name").textContent = course.name;
+        if (course.type < 3) {
+            const typeColor = course.type === 0 ? 'is-white' :
+                course.type === 1 ? 'is-danger' :
+                    'is-primary';
+            template.getElementById("type").className = `tag is-rounded ${typeColor}`;
+        }
+        template.getElementById("name").textContent = course.name;
 
-    if (course.english)
-        template.querySelector(".chips").appendChild(createTag("英文授課", "is-success"));
-/*     course.brief_code.forEach(code =>
-        code in BERIEF_CODE &&
-        template.querySelector(".chips").appendChild(createTag(BERIEF_CODE[code], "is-warning"))); */
+        if (course.english)
+            template.querySelector(".chips").appendChild(createTag("英文授課", "is-success"));
 
-    template.getElementById("detail").textContent = `${course.id}・${course.teacher}・${+course.credit} 學分`;
-    template.querySelector(".course").dataset.id = course.id;
-    template.querySelector(".toggle-course").classList.toggle('is-selected', course.id in selectedCourse)
+        template.getElementById("detail").textContent = `${course.id}・${course.teacher}・${+course.credit} 學分`;
+        template.querySelector(".course").dataset.id = course.id;
+        template.querySelector(".toggle-course").classList.toggle('is-selected', course.id in selectedCourse)
 
-    document.querySelector(search ? ".result" : ".selected").appendChild(template);
+        fragment.appendChild(template);
+    });
+    document.querySelector(search ? ".result" : ".selected").appendChild(fragment);
 }
 
 function search(searchTerm) {
     if (!searchTerm &&
-        !(filter.department)
+        !(filter.department) &&
+        !(filter.period)
     ) return [];
 
     const regex = RegExp(searchTerm, 'i');
     const regex2 = RegExp(searchTerm.replace(/\ /g, ''), 'i');
     const result = Object.values(courseData)
-        .filter(course => ((!filter.department || course.id.match(filter.departmentRegex)) && (
+        .filter(course => ((
             course.id.match(regex) ||
             course.id.match(regex2) ||
             course.teacher.match(regex) ||
-            course.name.match(regex)))
-        ).slice(0, FIND_COURSE_RESULT_LIMIT);
+            course.name.match(regex)) &&
+            (!filter.department || course.id.match(filter.departmentRegex)) && 
+            (!filter.period || filter.periodCodes.some(code => (course.time.match(code) !== null)))
+        )).slice(0, FIND_COURSE_RESULT_LIMIT);
 
     return result;
 }
@@ -421,7 +470,7 @@ function toggleCourse(courseId) {
         button?.classList.remove('is-selected');
     } else { // Select course
         const periods = parseTime(courseData[courseId].time);
-        const isConflict = periods.some(period => document.getElementById(period).childElementCount)
+        const isConflict = periods.some(period => document.getElementById(period).querySelector(".period:not(.preview)"))
         if (isConflict) {
             Toast.fire({
                 icon: 'error',
@@ -449,12 +498,26 @@ function parseTime(timeCode) {
     return result;
 }
 
-function renderPeriodBlock(course) {
+function renderPeriodBlock(course, preview = false) {
     const periods = parseTime(course.time);
-    periods.forEach(period => document.getElementById(period).innerHTML = `
-    <div data-id="${course.id}" class="period modal-launcher">
-        <span>${course.name}</span>
-    </div>`);
+
+    const periodBlock = document.createElement("div");
+    periodBlock.dataset.id = course.id;
+    periodBlock.className = "period modal-launcher";
+    if (preview) periodBlock.className += ' preview';
+    const text = document.createElement("span");
+    text.textContent = course.name;
+    periodBlock.appendChild(text);
+    periods.forEach(period => {
+        const blank = document.getElementById(period);
+        const existBlock = blank.querySelector(".period");
+        if (existBlock && existBlock.dataset.id === course.id) {
+            existBlock.classList.remove("preview");
+        } else if (!blank.querySelector(".period:not(.preview)")) {
+            const clone = document.importNode(periodBlock, true);
+            blank.appendChild(clone)
+        }
+    });
 }
 
 function renderSearchResult(searchTerm) {
@@ -462,7 +525,7 @@ function renderSearchResult(searchTerm) {
     if (typeof searchTerm === 'undefined')
         searchTerm = document.querySelector(".input").value.trim();
     const result = search(searchTerm);
-    result.forEach(course => appendCourseElement(course, true));
+    appendCourseElement(result, true);
 }
 
 document.querySelector(".input").oninput = event => {
