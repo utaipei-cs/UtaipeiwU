@@ -60,8 +60,8 @@ db.ref("news/").orderByKey().limitToLast(1).on("value", function (snapshot) {
 });
 
 firebase.auth().onAuthStateChanged(function (user) {
-    document.getElementById("user-status").textContent = user ? `嗨，${user.displayName}` : "Login";
-    document.getElementById("user-status").onclick = user ? undefined : login;
+    document.getElementById("user-status").textContent = user ? `嗨，${user.displayName}，點我登出` : "Login";
+    document.getElementById("user-status").onclick = user ? logout : login;
 
     if (user && !share) {
         db.ref(`user/${firebase.auth().currentUser.uid}/userInfo`).set({
@@ -97,6 +97,12 @@ const login = () => {
     provider.addScope('https://www.googleapis.com/auth/userinfo.email');
     firebase.auth().signInWithRedirect(provider);    
     //location.replace(`https://accounts.google.com/o/oauth2/auth?client_id=${OAUTH_CLIENT_ID}&response_type=code&scope=email&redirect_uri=${APP_URL}`);
+}
+
+const logout = () => {
+    firebase.auth().signOut().then(function() {
+        location.reload();
+    })
 }
 
 // Safari sucks.
