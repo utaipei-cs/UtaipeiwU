@@ -5,7 +5,7 @@
 - 基本模擬排課
 - 將課表輸出為圖片
 - 分享/匯入課表
-- 使用 NCTU OAuth 登入
+- 使用 Google OAuth 登入
 
 ## How to Fork
 
