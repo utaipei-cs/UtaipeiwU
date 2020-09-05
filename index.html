@@ -19,7 +19,6 @@
 
     <meta property="og:title" content="NTHUwU | 清大選課模擬器" />
     <meta property="og:url" content="https://samuel21119.github.io/NTHUwU/" />
-    <link rel="preload" href="course-data/1091-data.json" as="fetch" crossorigin>
 
     <script src="js/config.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
@@ -36,6 +35,17 @@
                 <a class="navbar-item" href="https://samuel21119.github.io/NTHUwU/">
                     NTHUwU
                 </a>
+                <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div class="navbar-menu" id="navMenu">
+                <div class="navbar-end">
+                    <a class="navbar-item" id="user-status"></a>
+                </div>
             </div>
         </div>
     </nav>
@@ -50,6 +60,15 @@
                         </span>
                     </p>
                 </div>
+                <div class="field select is-fullwidth">
+                    <select class="department" data-level="1"></select>
+                </div>
+                <div class="field select is-fullwidth is-hidden">
+                    <select class="department" data-level="2"></select>
+                </div>
+                <div class="field select is-fullwidth is-hidden">
+                    <select class="department" data-level="3"></select>
+                </div>
                 <div class="result course-panel course-list"></div>
                 <div class="course-panel">
                     <span class="tag is-info credits">0 學分</span>
@@ -58,13 +77,12 @@
             </div>
             <div class="column">
                 <div style="text-align: right; margin: 0.5em;">
-                    <button id="download-photo" class="button is-small">
+                    <button id="download" class="button is-small">
                         <span class="icon is-small">
                             <i class="fas fa-download"></i>
                         </span>
-                        <span>儲存課表為圖片</span>
+                        <span>下載圖片</span>
                     </button>
-
                     <button id="copy-link" class="button is-small">
                         <span class="icon is-small">
                             <i class="fas fa-share-square"></i>
@@ -78,20 +96,39 @@
                         </span>
                         <span>匯入此課表</span>
                     </button>
+
+                    <div class="dropdown is-right is-hoverable">
+                        <div class="dropdown-trigger">
+                            <button class="button is-small" aria-haspopup="true" aria-controls="setting">
+                                <span class="icon is-small">
+                                    <i class="fas fa-cog" aria-hidden="true"></i>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="dropdown-menu" id="setting" role="menu">
+                            <div class="dropdown-content has-text-left">
+                                <div class="dropdown-item">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="timetable">
-                    <div class="week-names">
-                        <div>Mon</div>
-                        <div>Tue</div>
-                        <div>Wed</div>
-                        <div>Thu</div>
-                        <div>Fri</div>
-                        <div>Sat</div>
-                    </div>
-                    <div class="time-interval">
-                    </div>
-                    <div class="content">
-                    </div>
+                <div class="table-container">
+                    <table class="timetable" id="timetable">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Mon</th>
+                                <th>Tue</th>
+                                <th>Wed</th>
+                                <th>Thu</th>
+                                <th>Fri</th>
+                                <th class="weekend">Sat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -109,9 +146,10 @@
     <template id="courseTemplate">
         <div class="course">
             <p>
-                <b class="modal-launcher" id="name"></b><br>
-                <span class="tag is-primary is-rounded"></span>
+                <b class="modal-launcher" id="name"></b>
+                <span class="tag is-rounded" id="type"></span>
             </p>
+            <div class="chips"></div>
             <p id="detail"></p>
             <a class="toggle-course">
                 <span class="icon">
@@ -156,12 +194,32 @@
         </div>
     </div>
 
-    <div class="loading is-hidden">
-        <span>Loading... uwu</span>
-    </div>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <style id="custom-style"></style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dom-to-image@2.6.0/src/dom-to-image.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
     <script src="js/app.js"></script>
     <script src="lib/dom-to-image.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+            if ($navbarBurgers.length > 0) {
+                $navbarBurgers.forEach(el => {
+                    el.addEventListener('click', () => {
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+
+                    });
+                });
+            }
+
+        });
+    </script>
 </body>
 
 </html>
