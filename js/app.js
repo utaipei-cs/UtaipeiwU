@@ -576,6 +576,8 @@ document.getElementById("import").onclick = () => {
         text: "接下來將會覆蓋你目前的課表ㄛ，確定嗎？",
         icon: 'warning',
         showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
         confirmButtonText: '匯入'
     }).then(result => {
         if (result.value) {
@@ -641,10 +643,22 @@ document.getElementById("download").onclick = () => {
 }
 
 document.getElementById("clear-table").onclick = () => {
-    const selectedDom = document.getElementsByClassName("selected course-list")[0];
-    const courseDoms = selectedDom.getElementsByClassName("toggle-course is-selected");
-    var cnt = courseDoms.length;
-    while (cnt-- > 0) courseDoms[0].click();
+    Swal.fire({
+        title: '刪除課表',
+        text: "刪除後的資料無法復原，確定嗎？",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '刪除'
+      }).then((result) => {
+        if (result.value) {
+            const selectedDom = document.getElementsByClassName("selected course-list")[0];
+            const courseDoms = selectedDom.getElementsByClassName("toggle-course is-selected");
+            var cnt = courseDoms.length;
+            while (cnt-- > 0) courseDoms[0].click();
+        }
+      })
 }
 
 document.querySelector('.modal-background').onclick =
