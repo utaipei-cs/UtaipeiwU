@@ -22,7 +22,7 @@ let department = {}
 
 let filter = {
     department: false,
-    departmentId: -1,
+    departmentRegex: null,
     period: false,
     periodCodes: []
 };
