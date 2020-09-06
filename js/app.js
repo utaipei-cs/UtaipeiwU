@@ -455,12 +455,18 @@ function search(searchTerm) {
     return result;
 }
 
+function isEmpty(obj) {  
+    for (var prop in obj)
+        return false;  
+    return true;  
+} 
+
 function save(remote = true) {
     const lastUpdate = +new Date();
     localStorage.setItem("selectedCourse", JSON.stringify(selectedCourse));
     localStorage.setItem("lastUpdate", +new Date());
 
-    if (firebase.auth().currentUser && remote)
+    if (!isEmpty(selectedCourse) && firebase.auth().currentUser && remote)
         db.ref(`user/${firebase.auth().currentUser.uid}/${YEAR}${SEMESTER}`).set({
             course: selectedCourse,
             lastUpdate: lastUpdate
