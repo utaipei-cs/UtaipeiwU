@@ -29,6 +29,8 @@ let filter = {
 
 let config = {};
 
+let theme = localStorage.getItem("theme") === "dark" ? "dark" : "light";
+
 firebase.initializeApp(firebaseConfig);
 firebase.analytics?.();
 
@@ -146,6 +148,23 @@ if (location.search.includes("share=")) {
     hide(document.querySelector("#clear-table"));
     show(document.querySelector("#import"));
 }
+
+function changeTheme() {
+    if (theme === "light") {
+        document.getElementById("body").classList.remove("dark");
+        document.getElementById("navbar").classList.remove("is-dark");
+        document.getElementById("navbar").classList.add("is-light");
+        hide(document.getElementById("dark-mode"));
+        show(document.getElementById("light-mode"));
+    }else if (theme === "dark") {
+        document.getElementById("body").classList.add("dark");
+        document.getElementById("navbar").classList.remove("is-light");
+        document.getElementById("navbar").classList.add("is-dark");
+        hide(document.getElementById("light-mode"));
+        show(document.getElementById("dark-mode"));
+    }
+}
+changeTheme();
 
 // Render timetable.
 ORDERS.forEach(period => {
@@ -413,12 +432,14 @@ function appendCourseElement(courses, search = false) {
     const fragment = document.createDocumentFragment();
     courses.forEach(course => {
         const template = document.importNode(document.getElementById("courseTemplate").content, true);
-        template.getElementById("type").textContent = COURSE_TYPE[course.type];
         if (course.type < 3) {
+            template.getElementById("type").textContent = COURSE_TYPE[course.type];
             const typeColor = course.type === 0 ? 'is-white' :
                 course.type === 1 ? 'is-danger' :
                     'is-primary';
             template.getElementById("type").className = `tag is-rounded ${typeColor}`;
+        }else {
+            template.getElementById("type").remove();
         }
         template.getElementById("name").textContent = course.name;
 
@@ -605,7 +626,6 @@ document.getElementById("download").onclick = () => {
     const scale = 2;
     const domNode = document.getElementsByClassName("table-container")[0];
     domtoimage.toPng(domNode, {
-        bgcolor: "#ffffff",
         width: domNode.scrollWidth * scale,
         height: domNode.scrollHeight * scale,
         style: {
@@ -630,3 +650,15 @@ document.getElementById("clear-table").onclick = () => {
 document.querySelector('.modal-background').onclick =
     document.querySelector('.card-header-icon').onclick =
     () => document.querySelector('.modal').classList.remove('is-active');
+
+document.getElementById("light-mode").onclick = () => {
+    theme = "dark";
+    localStorage.setItem("theme", theme);
+    changeTheme();
+}
+
+document.getElementById("dark-mode").onclick = () => {
+    theme = "light";
+    localStorage.setItem("theme", theme);
+    changeTheme();
+}
