@@ -77,7 +77,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                 const localLastUpdate = +localStorage.getItem("lastUpdate");
 
                 if (!isSame) {
-                    if (new Date(localLastUpdate) < new Date(remoteLastUpdate)) {
+                    if (isEmpty(selectedCourse) || new Date(localLastUpdate) < new Date(remoteLastUpdate)) {
                         // sync: remote to local
                         Toast.fire({ text: "已從伺服器更新你的課表" });
                         selectedCourse = course;
