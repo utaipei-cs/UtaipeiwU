@@ -143,6 +143,7 @@ let share = false;
 if (location.search.includes("share=")) {
     share = true;
     hide(document.querySelector(".sidebar"));
+    hide(document.querySelector("#clear-table"));
     show(document.querySelector("#import"));
 }
 
@@ -611,6 +612,13 @@ document.getElementById("download").onclick = () => {
         link.href = dataUrl;
         link.click();
     });
+}
+
+document.getElementById("clear-table").onclick = () => {
+    const selectedDom = document.getElementsByClassName("selected course-list")[0];
+    const courseDoms = selectedDom.getElementsByClassName("toggle-course is-selected");
+    var cnt = courseDoms.length;
+    while (cnt-- > 0) courseDoms[0].click();
 }
 
 document.querySelector('.modal-background').onclick =
