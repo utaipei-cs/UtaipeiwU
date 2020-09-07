@@ -335,7 +335,7 @@ function renderDepartment(department) {
             else if (level === 2)
                 currentValue = department[selects[0].value][elem.value];
             else
-                currentValue = department[selects[0].value][selects[1].value] + GRADE[elem.value];
+                currentValue = "[0-9]" + department[selects[0].value][selects[1].value] + GRADE[elem.value];
             
             const hasNextLevel = !!(level <= 2);
             if (hasNextLevel)
