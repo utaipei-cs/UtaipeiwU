@@ -1,8 +1,9 @@
 :root {
     --bg-color: #ffffff;
     --nav-box-shadow: #e6e9eb;
+    --navbar-menu-bg-color: #ffffff;
     --footer-color: #AAAAAA;
-    --footer-bg-color: #AAAAAA;
+    --footer-bg-color: #fafafa;
     --table-container-box-shadow: #ECEFF1;
     --timetable-bg-color: #ffffff;
     --timetable-period-bg-color: #f9f9f9;
@@ -23,6 +24,7 @@
 .dark {
     --bg-color: #181a1b;
     --nav-box-shadow: #5c5c5c;
+    --navbar-menu-bg-color: #282828;
     --footer-color: #d4d4d4;
     --footer-bg-color: #363636;
     --table-container-box-shadow: #757575;
@@ -62,6 +64,16 @@ body {
 nav {
     margin-bottom: 1.75rem;
     box-shadow: 0 5px 10px var(--nav-box-shadow);
+}
+
+@media screen and (max-width:1023px) {
+    .navbar-menu {
+        background-color: var(--navbar-menu-bg-color);
+    }
+}
+
+.navbar-item {
+    color: var(--timetable-color);
 }
 
 .navbar-brand img {
