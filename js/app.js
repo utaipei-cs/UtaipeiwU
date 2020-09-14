@@ -228,6 +228,15 @@ const settingOptions = [
                 cssSheet.insertRule(".course .tag{display: none;}", 0) :
                 cssSheet.cssRules.length && cssSheet.deleteRule(0)
         }
+    }, {
+        key: "showLocation",
+        description: "顯示修課教室",
+        callback: value => {
+            const body = document.getElementById("body");
+            value ?
+                body.classList.add("showRoom") :
+                body.classList.remove("showRoom")
+        }
     }
 ];
 
@@ -532,6 +541,22 @@ function parseTime(timeCode) {
     return result;
 }
 
+function getLocation(course, period, periodBlock) {
+    var clone = periodBlock.cloneNode(true);
+    const splTime = course["time"].split(",");
+    const splRoom = course["room"].split(",");
+    const loc = document.createElement("span");
+    loc.setAttribute("style", "position: absolute; width: 100%; font-size: 12px; bottom: 0px; display: var(--room-show)");
+    for (var i = 0; i < splTime.length; i++) {
+        if (splTime[i].indexOf(period) != -1) {
+            loc.textContent = splRoom[i].replace(/\ /g, "");
+            break;
+        }
+    }
+    clone.appendChild(loc);
+    return clone;
+}
+
 function renderPeriodBlock(course, preview = false) {
     const periods = parseTime(course.time);
 
@@ -545,10 +570,11 @@ function renderPeriodBlock(course, preview = false) {
     periods.forEach(period => {
         const blank = document.getElementById(period);
         const existBlock = blank.querySelector(".period");
+        console.log(period, course);
         if (existBlock && existBlock.dataset.id === course.id) {
             existBlock.classList.remove("preview");
         } else if (!blank.querySelector(".period:not(.preview)")) {
-            const clone = document.importNode(periodBlock, true);
+            const clone = document.importNode(getLocation(course, period, periodBlock), true);
             blank.appendChild(clone)
         }
     });
