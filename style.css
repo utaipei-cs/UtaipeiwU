@@ -145,7 +145,7 @@ footer {
     top: 0;
     transition: .5s ease;
     cursor: pointer;
-    height: 64px;
+    height: var(--timetable-td-height);
     width: 100%;
     opacity: 0;
 }
