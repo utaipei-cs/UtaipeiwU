@@ -56,6 +56,16 @@
     --timetable-td-height: 80px;
 }
 
+/* Show Time */
+:root {
+    --showTime-Width: 2rem;
+    --showTime-Style: none;
+}
+.showTime {
+    --showTime-Width: 100px;
+    --showTime-Style: block;
+}
+
 html,
 body {
     background-color: var(--bg-color);
@@ -117,7 +127,7 @@ footer {
 }
 
 .timetable tr>th:first-child {
-    width: 2rem;
+    width: var(--showTime-Width);
 }
 
 .timetable * {

@@ -170,7 +170,14 @@ changeTheme();
 ORDERS.forEach(period => {
     const row = document.createElement("tr");
     const time = document.createElement('th');
-    time.textContent = `${period}`;
+    const cha1 = document.createElement("span");
+    const cha2 = document.createElement("span");
+    cha1.textContent = `${period}`;
+    cha2.setAttribute("style", "display: var(--showTime-Style);")
+    cha2.textContent = `${TIME_MAPPING[period]}`;
+    time.appendChild(cha1);
+    time.appendChild(document.createElement("br"));
+    time.appendChild(cha2);
     const isExtra = (period.match(/[a-cn]/) !== null);
     if (isExtra)
         time.classList.add('extra');
@@ -237,7 +244,17 @@ const settingOptions = [
                 body.classList.add("showRoom") :
                 body.classList.remove("showRoom")
         }
+    }, {
+        key: "showTime",
+        description: "顯示時間",
+        callback: value => {
+            const body = document.getElementById("body");
+            value ?
+                body.classList.add("showTime") :
+                body.classList.remove("showTime")
+        }
     }
+
 ];
 
 renderConfig(settingOptions);
