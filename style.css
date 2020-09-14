@@ -1,3 +1,4 @@
+/* Dark Mode */
 :root {
     --bg-color: #ffffff;
     --nav-box-shadow: #e6e9eb;
@@ -43,6 +44,16 @@
     --card-button-color: #4db8ff;
     --button-color-hover: #ffffff;
     --input-border-color: #ffffff;
+}
+
+/* Show Room */
+:root {
+    --room-show: none;
+    --timetable-td-height: 64px;
+}
+.showRoom {
+    --room-show: block;
+    --timetable-td-height: 80px;
 }
 
 html,
@@ -125,7 +136,7 @@ footer {
     position: relative;
     box-shadow: inset 1px 1px 1px var(--timetable-box-shadow);
     padding: 0;
-    height: 64px;
+    height: var(--timetable-td-height);
     color: var(--timetable-color);
 }
 
