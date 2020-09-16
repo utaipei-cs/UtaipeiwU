@@ -272,6 +272,7 @@ Promise.all([
 
         document.querySelector(".input").disabled = false;
         document.querySelector(".input").placeholder = "課號 / 課名 / 老師";
+        console.log(selectedCourse);
         document.querySelector(".credits").textContent = `${totalCredits()} 學分`;
         renderAllSelected();
         renderDepartment(department);
@@ -634,9 +635,16 @@ document.getElementById("import").onclick = () => {
 }
 
 function getShareKey() {
-    const units_cnt = Object.keys(selectedCourse).reduce((a, b) => (a[b.replace(/[0-9]/g, "")] = a[b.replace(/[0-9]/g, "")] + 1 || 1, a), {});
-    const units = Object.keys(units_cnt).reduce((a, b) => (a += `${(units_cnt[b] === 1 ? "" : units_cnt[b])}${b},`), "");
-    const numbers = BigInt(Object.keys(selectedCourse).reduce((a, b) => (a += b.match(/\d+$/)[0], a), "")).toString(36);
+    const unitsCnt = Object.keys(selectedCourse).reduce((a, b) => (a[b.replace(/[0-9]/g, "")] = a[b.replace(/[0-9]/g, "")] + 1 || 1, a), {});
+    const unitsNumbers = Object.keys(selectedCourse).reduce((a, b) => {
+        const key = b.replace(/[0-9]/g, "");
+        const number = b.match(/\d+$/)[0];
+        console.log(number);
+        a[key] = a[key] === undefined ? number : a[key] + number;
+        return a;
+    }, {});
+    const units = Object.keys(unitsCnt).reduce((a, b) => (a += `${(unitsCnt[b] === 1 ? "" : unitsCnt[b])}${b},`), "");
+    const numbers = BigInt(Object.entries(unitsNumbers).reduce((a, b) => (a += b[1], a), "")).toString(36);
     return units + numbers;
 }
 
