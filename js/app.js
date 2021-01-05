@@ -136,7 +136,7 @@ function loadFromShareLink() {
 }
 
 function loadFromLocalStorage() {
-    return JSON.parse(localStorage.getItem("selectedCourse")) || {};
+    return JSON.parse(localStorage.getItem(`selectedCourse${YS}${SEMESTER}`)) || {};
 }
 
 const totalCredits = () => Object.keys(selectedCourse).reduce((accu, id) => +courseData[id].credit + accu, 0);
@@ -511,7 +511,7 @@ function isEmpty(obj) {
 
 function save(remote = true) {
     const lastUpdate = +new Date();
-    localStorage.setItem("selectedCourse", JSON.stringify(selectedCourse));
+    localStorage.setItem(`selectedCourse${YEAR}${SEMESTER}`, JSON.stringify(selectedCourse));
     localStorage.setItem("lastUpdate", +new Date());
 
     if (!isEmpty(selectedCourse) && firebase.auth().currentUser && remote)
