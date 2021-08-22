@@ -136,7 +136,7 @@ function loadFromShareLink() {
 }
 
 function loadFromLocalStorage() {
-    return JSON.parse(localStorage.getItem(`selectedCourse${YS}${SEMESTER}`)) || {};
+    return JSON.parse(localStorage.getItem(`selectedCourse${YS}`)) || {};
 }
 
 const totalCredits = () => Object.keys(selectedCourse).reduce((accu, id) => +courseData[id].credit + accu, 0);
@@ -261,13 +261,14 @@ renderConfig(settingOptions);
 
 // Fetch course data.
 Promise.all([
-    `course-data/${YEAR}${SEMESTER}-data.json`,
+    `course-data/${YS}-data.json`,
     `course-data/department.json`
 ].map(url => fetch(url).then(r => r.json())))
     .then(response => {
         const [data, department] = response;
 
         courseData = data;
+        console.log(123);
         selectedCourse = share ? loadFromShareLink() : loadFromLocalStorage();
 
         document.querySelector(".input").disabled = false;
