@@ -31,10 +31,21 @@ let config = {};
 
 let theme = localStorage.getItem("theme") === "dark" ? "dark" : "light";
 
-firebase.initializeApp(firebaseConfig);
-firebase.analytics?.();
+//firebase.initializeApp(firebaseConfig);
+//firebase.analytics?.();
 
-const db = firebase.database();
+
+
+
+//const app = initializeApp(firebaseConfig);
+//const db = getFirestore(app);
+//const analytics = getAnalytics();
+
+//const db = firebase.database();
+
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+const db = firebaseApp.firestore();
+const auth = firebaseApp.auth();
 
 const loginInfo = Object.fromEntries(new URLSearchParams(location.search));
 if (loginInfo.token) {
@@ -51,7 +62,7 @@ if (loginInfo.token) {
 }
 
 
-db.ref("news/").orderByKey().limitToLast(1).on("value", function (snapshot) {
+/*db.ref("news/").orderByKey().limitToLast(1).on("value", function (snapshot) {
     const lastReadNews = +localStorage.getItem("lastReadNews");
     const value = snapshot.val();
     const [id, news] = Object.entries(value)[0];
@@ -59,7 +70,7 @@ db.ref("news/").orderByKey().limitToLast(1).on("value", function (snapshot) {
         Swal.fire({ title: news.title, html: news.content.replace(/\\t/g, "\t"), icon: 'info' })
 
     localStorage.setItem("lastReadNews", id);
-});
+});*/
 
 firebase.auth().onAuthStateChanged(function (user) {
     document.getElementById("user-status").textContent = user ? `嗨，${user.displayName}，點我登出` : "Login";
