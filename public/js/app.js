@@ -63,7 +63,7 @@ if (loginInfo.token) {
 }
 
 
-db.ref("news/").orderByKey().limitToLast(1).on("value", function (snapshot) {
+/*db.ref("news/").orderByKey().limitToLast(1).on("value", function (snapshot) {
     const lastReadNews = +localStorage.getItem("lastReadNews");
     const value = snapshot.val();
     const [id, news] = Object.entries(value)[0];
@@ -71,7 +71,7 @@ db.ref("news/").orderByKey().limitToLast(1).on("value", function (snapshot) {
         Swal.fire({ title: news.title, html: news.content.replace(/\\t/g, "\t"), icon: 'info' })
 
     localStorage.setItem("lastReadNews", id);
-});
+});*/
 
 firebase.auth().onAuthStateChanged(function (user) {
     document.getElementById("user-status").textContent = user ? `嗨，${user.displayName}，點我登出` : "Login";
@@ -190,7 +190,7 @@ ORDERS.forEach(period => {
     time.appendChild(cha1);
     time.appendChild(document.createElement("br"));
     time.appendChild(cha2);
-    const isExtra = (period.match(/[a-cn]/) !== null);
+    const isExtra = (period.match(/[b-e5]/) !== null);
     if (isExtra)
         time.classList.add('extra');
     row.appendChild(time);
@@ -450,7 +450,7 @@ function openModal(courseId) {
 
     modal.querySelector('.card-header-title').textContent = data.name;
     // modal.querySelector('#outline').href = `https://timetable.nctu.edu.tw/?r=main/crsoutline&Acy=${YEAR}&Sem=${SEMESTER}&CrsNo=${courseId}&lang=zh-tw`;
-    modal.querySelector('#outline').href = `https://www.ccxp.nthu.edu.tw/ccxp/INQUIRE/JH/6/6.2/6.2.9/JH629001.php`;
+    modal.querySelector('#outline').href = `https://eeclass.utaipei.edu.tw/service/syllabus/?term=${YEAR}${SEMESTER_SINGLE}&no=${courseId.slice(-4)}`;
 }
 
 function createTag(text, type, closeCallback) {
