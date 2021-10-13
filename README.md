@@ -1,4 +1,4 @@
-# utaipeiwU
+# *UtaipeiwU*
 北市大選課模擬器 / utaipei course selection simulator.
 
 修改自 NTH*Uw*U
