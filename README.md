@@ -1,7 +1,7 @@
 # utaipeiwU
 北市大選課模擬器 / utaipei course selection simulator.
 
-修改自 
+修改自 NTH*Uw*U
 
 ## Feature
 - 基本模擬排課
