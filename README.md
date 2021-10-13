@@ -1,5 +1,7 @@
-# NTH*UwU*
-清大選課模擬器 / NTHU course selection simulator.
+# utaipeiwU
+北市大選課模擬器 / utaipei course selection simulator.
+
+修改自 
 
 ## Feature
 - 基本模擬排課
