@@ -47,6 +47,15 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 //const db = firebaseApp.firestore();
 const db = firebaseApp.database();
 const auth = firebaseApp.auth();
+var storage = firebase.storage();//tmp
+
+
+if (location.hostname === "localhost") {
+    db.useEmulator("localhost", 9000);
+    auth.useEmulator("http://localhost:9099");
+    storage.useEmulator("localhost", 9199);
+    Toast.fire({ text: "loclahost!!" });
+}
 
 const loginInfo = Object.fromEntries(new URLSearchParams(location.search));
 if (loginInfo.token) {
@@ -63,7 +72,7 @@ if (loginInfo.token) {
 }
 
 
-/*db.ref("news/").orderByKey().limitToLast(1).on("value", function (snapshot) {
+db.ref("news/").orderByKey().limitToLast(1).on("value", function (snapshot) {
     const lastReadNews = +localStorage.getItem("lastReadNews");
     const value = snapshot.val();
     const [id, news] = Object.entries(value)[0];
@@ -71,7 +80,7 @@ if (loginInfo.token) {
         Swal.fire({ title: news.title, html: news.content.replace(/\\t/g, "\t"), icon: 'info' })
 
     localStorage.setItem("lastReadNews", id);
-});*/
+});
 
 firebase.auth().onAuthStateChanged(function (user) {
     document.getElementById("user-status").textContent = user ? `嗨，${user.displayName}，點我登出` : "Login";
@@ -678,7 +687,7 @@ document.getElementById("copy-link").onclick = () => {
     try {
         document.execCommand('copy');
         Toast.fire({
-            title: `<a href="${link}" target="_blank">複製好了！點此可直接前往</a>`,
+            title: `<a href="${link}" target="_blank">複製好了! 點此可直接前往</a>`,
             icon: "success"
         });
     } catch (err) {
