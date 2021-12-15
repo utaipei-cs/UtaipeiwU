@@ -31,20 +31,10 @@ let config = {};
 
 let theme = localStorage.getItem("theme") === "dark" ? "dark" : "light";
 
-//firebase.initializeApp(firebaseConfig);
-//firebase.analytics?.();
 
-
-
-
-//const app = initializeApp(firebaseConfig);
-//const db = getFirestore(app);
-//const analytics = getAnalytics();
-
-//const db = firebase.database();
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
-//const db = firebaseApp.firestore();
+
 const db = firebaseApp.database();
 const auth = firebaseApp.auth();
 var storage = firebase.storage();//tmp
@@ -145,15 +135,9 @@ function parseBigInt(value, radix = 36) {
 
 function loadFromShareLink() {
     const shareKey = new URLSearchParams(location.search).get("share");
-    const rawCourseUnits = shareKey.split(",");
-    const courseUnits = rawCourseUnits.reduce((a, b) => {
-        const times = parseInt((b.match(/\d+/) || [1])[0]);
-        const unit = b.match(/[A-Z]+/);
-        a.push((unit === null ? b : Array(times).fill(unit[0])));
-        return a;
-    }, []).flat();
-    const courseNumbers = parseBigInt(courseUnits[courseUnits.length - 1]).toString().match(/.{6}/g);
-    return courseNumbers.reduce((a, b, c) => (a[`${YS}${courseUnits[c]}${b}`] = true, a), {});
+    const courseIds = parseBigInt(shareKey).toString().match(/.{1,14}/g);
+    return courseIds.reduce((a, b) => (a[b] = true, a), {});	
+
 }
 
 function loadFromLocalStorage() {
@@ -451,14 +435,13 @@ function openModal(courseId) {
 
     const data = courseData[courseId];
     const fields = modal.querySelectorAll('dd');
-    fields[0].textContent = data.id;
+    fields[0].textContent = data.id.slice(-4);
     fields[1].textContent = data.credit;
     fields[2].textContent = data.teacher;
     fields[3].textContent = data.time;
     fields[4].textContent = data.room;
 
     modal.querySelector('.card-header-title').textContent = data.name;
-    // modal.querySelector('#outline').href = `https://timetable.nctu.edu.tw/?r=main/crsoutline&Acy=${YEAR}&Sem=${SEMESTER}&CrsNo=${courseId}&lang=zh-tw`;
     modal.querySelector('#outline').href = `https://eeclass.utaipei.edu.tw/service/syllabus/?term=${YEAR}${SEMESTER_SINGLE}&no=${courseId.slice(-4)}`;
 }
 
@@ -571,7 +554,7 @@ function toggleCourse(courseId) {
 }
 
 function parseTime(timeCode) {
-    const timeList = timeCode.match(/[MTWRFS][1-9nabc]/g);
+    const timeList = timeCode.match(/[MTWRFS][1-9nabcde]/g);
     if (!timeList) return [];
 
     const result = timeList.map(
@@ -657,17 +640,7 @@ document.getElementById("import").onclick = () => {
 }
 
 function getShareKey() {
-    const unitsCnt = Object.keys(selectedCourse).reduce((a, b) => (a[b.replace(/[0-9]/g, "")] = a[b.replace(/[0-9]/g, "")] + 1 || 1, a), {});
-    const unitsNumbers = Object.keys(selectedCourse).reduce((a, b) => {
-        const key = b.replace(/[0-9]/g, "");
-        const number = b.match(/\d+$/)[0];
-        console.log(number);
-        a[key] = a[key] === undefined ? number : a[key] + number;
-        return a;
-    }, {});
-    const units = Object.keys(unitsCnt).reduce((a, b) => (a += `${(unitsCnt[b] === 1 ? "" : unitsCnt[b])}${b},`), "");
-    const numbers = BigInt(Object.entries(unitsNumbers).reduce((a, b) => (a += b[1], a), "")).toString(36);
-    return units + numbers;
+    return BigInt(Object.keys(selectedCourse).join('')).toString(36);
 }
 
 document.getElementById("copy-link").onclick = () => {
