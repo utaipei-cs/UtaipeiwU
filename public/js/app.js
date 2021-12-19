@@ -138,6 +138,7 @@ function loadFromShareLink() {
     console.log('shareKey:' + shareKey);
     var decompressFromBase64 = LZString.decompressFromBase64(shareKey);
     console.log('decompressFromBase64:' + decompressFromBase64);
+    //console.log('decompress before mach:' + LZString.decompress(decompressFromBase64));
     const courseIds = LZString.decompress(decompressFromBase64).match(/.{1,14}/g);
     console.log('decompress:' + courseIds);
     return courseIds.reduce((a, b) => (a[b] = true, a), {});
@@ -645,15 +646,16 @@ document.getElementById("import").onclick = () => {
 function getShareKey() {
     console.log('selectedCourse:' + Object.keys(selectedCourse).join(''));
     //console.log('compress:' + LZString.compress(selectedCourse));
-    var compressToBase64 = LZString.compress(Object.keys(selectedCourse).join(''));
-    console.log('compressToBase64:' + compressToBase64);
-    return LZString.compressToBase64(compressToBase64)
+    var compress = LZString.compress(Object.keys(selectedCourse).join(''));
+    console.log('compress:' + compress);
+    //console.log('compressToBase64:' + LZString.compressToBase64(compress));
+    return encodeURIComponent(LZString.compressToBase64(compress))
 }
 
 document.getElementById("copy-link").onclick = () => {
     const shareKey = getShareKey();
 
-    const link = `${APP_URL}?share=${shareKey}`;
+    var link = `${APP_URL}?share=${shareKey}`;
     const copy = document.createElement("div");
     copy.textContent = link;
     document.body.appendChild(copy);
