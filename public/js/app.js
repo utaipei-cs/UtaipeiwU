@@ -135,9 +135,12 @@ function parseBigInt(value, radix = 36) {
 
 function loadFromShareLink() {
     const shareKey = new URLSearchParams(location.search).get("share");
-    const courseIds = parseBigInt(shareKey).toString().match(/.{1,14}/g);
-    return courseIds.reduce((a, b) => (a[b] = true, a), {});	
-
+    console.log('shareKey:' + shareKey);
+    var decompressFromBase64 = LZString.decompressFromBase64(shareKey);
+    console.log('decompressFromBase64:' + decompressFromBase64);
+    const courseIds = LZString.decompress(decompressFromBase64).match(/.{1,14}/g);
+    console.log('decompress:' + courseIds);
+    return courseIds.reduce((a, b) => (a[b] = true, a), {});
 }
 
 function loadFromLocalStorage() {
@@ -640,7 +643,11 @@ document.getElementById("import").onclick = () => {
 }
 
 function getShareKey() {
-    return BigInt(Object.keys(selectedCourse).join('')).toString(36);
+    console.log('selectedCourse:' + Object.keys(selectedCourse).join(''));
+    //console.log('compress:' + LZString.compress(selectedCourse));
+    var compressToBase64 = LZString.compress(Object.keys(selectedCourse).join(''));
+    console.log('compressToBase64:' + compressToBase64);
+    return LZString.compressToBase64(compressToBase64)
 }
 
 document.getElementById("copy-link").onclick = () => {
