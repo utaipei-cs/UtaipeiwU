@@ -447,6 +447,8 @@ function openModal(courseId) {
 
     modal.querySelector('.card-header-title').textContent = data.name;
     modal.querySelector('#outline').href = `https://eeclass.utaipei.edu.tw/service/syllabus/?term=${YEAR}${SEMESTER_SINGLE}&no=${courseId.slice(-4)}`;
+    modal.querySelector('#dcard_teacher').href = `https://www.dcard.tw/search?query=${data.teacher}&forum=utaipei`;
+    modal.querySelector('#dcard_course').href = `https://www.dcard.tw/search?query=${data.name}&forum=utaipei`;
 }
 
 function createTag(text, type, closeCallback) {

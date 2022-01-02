@@ -3,5 +3,5 @@ node_modules
 package-lock.json
 crawler/*.json
 database-debug.log
-database-debug.log
 firebase-debug.log
+
