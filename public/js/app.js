@@ -444,6 +444,8 @@ function openModal(courseId) {
     fields[2].textContent = data.teacher;
     fields[3].textContent = data.time;
     fields[4].textContent = data.room;
+    fields[5].textContent = data.area;
+    fields[6].textContent = data.field;
 
     modal.querySelector('.card-header-title').textContent = data.name;
     modal.querySelector('#outline').href = `https://eeclass.utaipei.edu.tw/service/syllabus/?term=${YEAR}${SEMESTER_SINGLE}&no=${courseId.slice(-4)}`;
@@ -480,6 +482,7 @@ function appendCourseElement(courses, search = false) {
             template.getElementById("type").remove();
         }
         template.getElementById("name").textContent = course.name;
+        template.querySelector(".chips").appendChild(createTag(course.field, "is-success"));
 
         if (course.english)
             template.querySelector(".chips").appendChild(createTag("英文授課", "is-success"));
