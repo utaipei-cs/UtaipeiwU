@@ -37,6 +37,7 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 const db = firebaseApp.database();
 const auth = firebaseApp.auth();
+const analytics = firebaseApp.analytics();
 var storage = firebase.storage();//tmp
 
 
@@ -45,6 +46,7 @@ if (location.hostname === "localhost") {
     auth.useEmulator("http://localhost:9099");
     storage.useEmulator("localhost", 9199);
     Toast.fire({ text: "loclahost!!" });
+    analytics.logEvent('dev');
 }
 
 const loginInfo = Object.fromEntries(new URLSearchParams(location.search));
@@ -93,6 +95,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                     if (isEmpty(selectedCourse) || new Date(localLastUpdate) < new Date(remoteLastUpdate)) {
                         // sync: remote to local
                         Toast.fire({ text: "已從伺服器更新你的課表" });
+                        analytics.logEvent('update_from_server');
                         selectedCourse = course;
                         save(false);
                     } else {
@@ -108,12 +111,14 @@ firebase.auth().onAuthStateChanged(function (user) {
 const login = () => {
     var provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('https://www.googleapis.com/auth/userinfo.email');
-    firebase.auth().signInWithRedirect(provider);    
+    firebase.auth().signInWithRedirect(provider);
+    analytics.logEvent('login');
     //location.replace(`https://accounts.google.com/o/oauth2/auth?client_id=${OAUTH_CLIENT_ID}&response_type=code&scope=email&redirect_uri=${APP_URL}`);
 }
 
 const logout = () => {
-    firebase.auth().signOut().then(function() {
+    firebase.auth().signOut().then(function () {
+        analytics.logEvent('logout');
         location.reload();
     })
 }
@@ -159,6 +164,7 @@ if (location.search.includes("share=")) {
 }
 
 function changeTheme() {
+    analytics.logEvent('changeTheme');
     if (theme === "light") {
         document.getElementById("body").classList.remove("dark");
         document.getElementById("navbar").classList.remove("is-dark");
@@ -451,6 +457,7 @@ function openModal(courseId) {
     modal.querySelector('#outline').href = `https://eeclass.utaipei.edu.tw/service/syllabus/?term=${YEAR}${SEMESTER_SINGLE}&no=${courseId.slice(-4)}`;
     modal.querySelector('#dcard_teacher').href = `https://www.dcard.tw/search?query=${data.teacher}&forum=utaipei`;
     modal.querySelector('#dcard_course').href = `https://www.dcard.tw/search?query=${data.name}&forum=utaipei`;
+    analytics.logEvent('openModal');
 }
 
 function createTag(text, type, closeCallback) {
@@ -640,6 +647,7 @@ document.getElementById("import").onclick = () => {
     }).then(result => {
         if (result.value) {
             save();
+            analytics.logEvent('import');
             Toast.fire({
                 title: `<a href=${APP_URL}>匯入完成！點此前往選課模擬</a>`,
                 icon: "success"
@@ -711,7 +719,8 @@ document.getElementById("clear-table").onclick = () => {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: '刪除'
-      }).then((result) => {
+    }).then((result) => {
+        analytics.logEvent('clear-table');
         if (result.value) {
             const selectedDom = document.getElementsByClassName("selected course-list")[0];
             const courseDoms = selectedDom.getElementsByClassName("toggle-course is-selected");
