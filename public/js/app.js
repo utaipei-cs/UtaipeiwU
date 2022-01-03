@@ -685,6 +685,7 @@ document.getElementById("copy-link").onclick = () => {
             title: `<a href="${link}" target="_blank">複製好了! 點此可直接前往</a>`,
             icon: "success"
         });
+        analytics.logEvent('copy-link');
     } catch (err) {
         console.log('Oops, unable to copy');
     }
