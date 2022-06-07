@@ -4,4 +4,4 @@ package-lock.json
 crawler/*.json
 database-debug.log
 firebase-debug.log
-
+.history
