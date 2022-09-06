@@ -42,7 +42,7 @@ var storage = firebase.storage();//tmp
 
 
 if (location.hostname === "localhost") {
-    db.useEmulator("localhost", 9000);
+    db.useEmulator("localhost", 9900);
     auth.useEmulator("http://localhost:9099");
     storage.useEmulator("localhost", 9199);
     Toast.fire({ text: "loclahost!!" });
@@ -171,7 +171,7 @@ function changeTheme() {
         document.getElementById("navbar").classList.add("is-light");
         hide(document.getElementById("dark-mode"));
         show(document.getElementById("light-mode"));
-    }else if (theme === "dark") {
+    } else if (theme === "dark") {
         document.getElementById("body").classList.add("dark");
         document.getElementById("navbar").classList.remove("is-light");
         document.getElementById("navbar").classList.add("is-dark");
@@ -379,7 +379,7 @@ function renderDepartment(department) {
                 currentValue = department[selects[0].value][elem.value];
             else
                 currentValue = "[0-9]" + department[selects[0].value][selects[1].value] + GRADE[elem.value];
-            
+
             const hasNextLevel = !!(level <= 2);
             if (hasNextLevel)
                 renderSelect(level + 1, currentValue)
@@ -485,7 +485,7 @@ function appendCourseElement(courses, search = false) {
                 course.type === 1 ? 'is-danger' :
                     'is-primary';
             template.getElementById("type").className = `tag is-rounded ${typeColor}`;
-        }else {
+        } else {
             template.getElementById("type").remove();
         }
         template.getElementById("name").textContent = course.name;
@@ -517,18 +517,18 @@ function search(searchTerm) {
             course.id.match(regex2) ||
             course.teacher.match(regex) ||
             course.name.match(regex)) &&
-            (!filter.department || course.id.match(filter.departmentRegex)) && 
+            (!filter.department || course.id.match(filter.departmentRegex)) &&
             (!filter.period || filter.periodCodes.some(code => (course.time.match(code) !== null)))
         )).slice(0, FIND_COURSE_RESULT_LIMIT);
 
     return result;
 }
 
-function isEmpty(obj) {  
+function isEmpty(obj) {
     for (var prop in obj)
-        return false;  
-    return true;  
-} 
+        return false;
+    return true;
+}
 
 function save(remote = true) {
     const lastUpdate = +new Date();
@@ -700,7 +700,7 @@ document.getElementById("download").onclick = () => {
         width: domNode.scrollWidth * scale,
         height: domNode.scrollHeight * scale,
         style: {
-            transform: 'scale('+scale+')',
+            transform: 'scale(' + scale + ')',
             transformOrigin: 'top left'
         }
     }).then(function (dataUrl) {
@@ -728,7 +728,7 @@ document.getElementById("clear-table").onclick = () => {
             var cnt = courseDoms.length;
             while (cnt-- > 0) courseDoms[0].click();
         }
-      })
+    })
 }
 
 document.querySelector('.modal-background').onclick =
