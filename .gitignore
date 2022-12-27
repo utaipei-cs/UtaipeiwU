@@ -5,3 +5,4 @@ crawler/*.json
 database-debug.log
 firebase-debug.log
 .history
+.venv
