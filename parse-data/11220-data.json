@@ -995,6 +995,30 @@
     "english": false,
     "type": 1
   },
+  "11220890063271": {
+    "id": "11220890063271",
+    "name": "碩士論文",
+    "credit": "2.0",
+    "field": "系定必修",
+    "area": "博愛",
+    "time": "",
+    "room": "",
+    "teacher": "張育傑時間未定",
+    "english": false,
+    "type": 1
+  },
+  "11220890063272": {
+    "id": "11220890063272",
+    "name": "獨立研究",
+    "credit": "1.0",
+    "field": "系定必修",
+    "area": "博愛",
+    "time": "",
+    "room": "",
+    "teacher": "張育傑時間未定",
+    "english": false,
+    "type": 1
+  },
   "11220891070899": {
     "id": "11220891070899",
     "name": "書報討論",
@@ -2538,7 +2562,7 @@
     "field": "系定必修",
     "area": "博愛",
     "time": "T8T9Ta",
-    "room": "G512電腦教室",
+    "room": "G522電腦教室",
     "teacher": "賴阿福 ",
     "english": false,
     "type": 0
@@ -2550,7 +2574,7 @@
     "field": "系定必修",
     "area": "博愛",
     "time": "W8W9Wa",
-    "room": "G512電腦教室",
+    "room": "G513電腦教室",
     "teacher": "教師未定 ",
     "english": false,
     "type": 0
@@ -2585,7 +2609,7 @@
     "credit": "3.0",
     "field": "系定必修",
     "area": "博愛",
-    "time": "R6R7R8",
+    "time": "W8W9Wa",
     "room": "G314",
     "teacher": "洪瑞鍾 ",
     "english": false,
@@ -2654,7 +2678,7 @@
   "11220910022137": {
     "id": "11220910022137",
     "name": "手機程式設計",
-    "credit": "0",
+    "credit": "3.0",
     "field": "系定選修",
     "area": "博愛",
     "time": "M6M7M8",
@@ -2690,7 +2714,7 @@
   "11220910022140": {
     "id": "11220910022140",
     "name": "數位電路實驗",
-    "credit": "3.0",
+    "credit": "1.0",
     "field": "系定必修",
     "area": "博愛",
     "time": "W2W3W4",
@@ -2705,9 +2729,9 @@
     "credit": "3.0",
     "field": "系定必修",
     "area": "博愛",
-    "time": "T8T9Ta",
+    "time": "R6R7R8",
     "room": "G314",
-    "teacher": "教師未定 ",
+    "teacher": "李美賢 ",
     "english": false,
     "type": 0
   },
@@ -2753,8 +2777,8 @@
     "credit": "3.0",
     "field": "系定選修",
     "area": "博愛",
-    "time": "W8W9Wa",
-    "room": "G315",
+    "time": "M6M7M8",
+    "room": "G316",
     "teacher": "洪瑞鍾 ",
     "english": false,
     "type": 0
@@ -2969,8 +2993,8 @@
     "credit": "3.0",
     "field": "系定選修",
     "area": "博愛",
-    "time": "W8W9Wa",
-    "room": "G315",
+    "time": "M6M7M8",
+    "room": "G316",
     "teacher": "洪瑞鍾 ",
     "english": false,
     "type": 0
@@ -2989,7 +3013,7 @@
   },
   "11220910042158": {
     "id": "11220910042158",
-    "name": "密碼學",
+    "name": "密碼學概論",
     "credit": "3.0",
     "field": "系定選修",
     "area": "博愛",
@@ -3149,8 +3173,8 @@
     "credit": "3.0",
     "field": "系定必修",
     "area": "博愛",
-    "time": "T6T7T8",
-    "room": "G522電腦教室",
+    "time": "T6T7",
+    "room": "G515電腦教室",
     "teacher": "教師未定 ",
     "english": false,
     "type": 0
@@ -3343,7 +3367,7 @@
     "area": "博愛",
     "time": "W6W7",
     "room": "G516",
-    "teacher": "教師未定 ",
+    "teacher": "洪瑞鍾 ",
     "english": false,
     "type": 1
   },
@@ -4119,7 +4143,7 @@
     "id": "11220930010971",
     "name": "棒壘球",
     "credit": "1.0",
-    "field": "系定必修(學科)",
+    "field": "系定必修(術科)",
     "area": "博愛",
     "time": "T1T2",
     "room": "操場",
@@ -4255,7 +4279,7 @@
     "area": "博愛",
     "time": "MaMb",
     "room": "教室未定",
-    "teacher": "陳信中 ",
+    "teacher": "洪毓嶺 ",
     "english": false,
     "type": 1
   },
@@ -4275,7 +4299,7 @@
     "id": "11220930011926",
     "name": "棒壘球",
     "credit": "1.0",
-    "field": "系定必修(學科)",
+    "field": "系定必修(術科)",
     "area": "博愛",
     "time": "T3T4",
     "room": "操場",
@@ -4459,7 +4483,7 @@
     "area": "博愛",
     "time": "WaWb",
     "room": "教室未定",
-    "teacher": "陳信中 ",
+    "teacher": "洪毓嶺 ",
     "english": false,
     "type": 1
   },
@@ -4477,7 +4501,7 @@
   },
   "11220930021953": {
     "id": "11220930021953",
-    "name": "幼兒體育",
+    "name": "幼兒體育(停開)",
     "credit": "2.0",
     "field": "系定選修(學科)",
     "area": "博愛",
@@ -4603,7 +4627,7 @@
     "area": "博愛",
     "time": "FaFb",
     "room": "教室未定",
-    "teacher": "陳信中 ",
+    "teacher": "洪毓嶺 ",
     "english": false,
     "type": 1
   },
@@ -4837,7 +4861,7 @@
   },
   "11220930041982": {
     "id": "11220930041982",
-    "name": "體育科多媒體運用(二)",
+    "name": "體育科多媒體運用(二)(停開)",
     "credit": "2.0",
     "field": "系定選修(學科)",
     "area": "博愛",
@@ -5161,13 +5185,13 @@
   },
   "11220930072214": {
     "id": "11220930072214",
-    "name": "運動生物力學研究(停開)",
+    "name": "運動訓練處方研究",
     "credit": "2.0",
     "field": "系定選修",
     "area": "博愛",
     "time": "TdTe",
     "room": "G608",
-    "teacher": "林寶城 ",
+    "teacher": "王家玄 ",
     "english": false,
     "type": 0
   },
@@ -5873,8 +5897,8 @@
     "credit": "2.0",
     "field": "系定選修",
     "area": "博愛",
-    "time": "R8R9",
-    "room": "C312",
+    "time": "T3T4",
+    "room": "C306",
     "teacher": "張淑萍 ",
     "english": false,
     "type": 0
@@ -6233,9 +6257,9 @@
     "credit": "2.0",
     "field": "分組選修",
     "area": "博愛",
-    "time": "M6M7M8M9",
-    "room": "C313",
-    "teacher": "陳相如 ",
+    "time": "",
+    "room": "",
+    "teacher": "陳相如 、 ",
     "english": false,
     "type": 0
   },
@@ -8706,7 +8730,7 @@
     "field": "系定選修",
     "area": "博愛",
     "time": "W2W3W4",
-    "room": "C214",
+    "room": "G522電腦教室",
     "teacher": "羅明 ",
     "english": false,
     "type": 0
@@ -8826,7 +8850,7 @@
     "field": "系定選修",
     "area": "博愛",
     "time": "W2W3W4",
-    "room": "C214",
+    "room": "G522電腦教室",
     "teacher": "羅明 ",
     "english": false,
     "type": 0
@@ -9859,7 +9883,7 @@
     "area": "博愛",
     "time": "T3T4",
     "room": "G302",
-    "teacher": "教師未定 ",
+    "teacher": "彭文松 ",
     "english": false,
     "type": 1
   },
@@ -10027,7 +10051,7 @@
     "area": "博愛",
     "time": "W6W7",
     "room": "G402",
-    "teacher": "教師未定 ",
+    "teacher": "蕭勝煌 、顏如娟 ",
     "english": false,
     "type": 0
   },
@@ -10123,7 +10147,7 @@
     "area": "博愛",
     "time": "R3R4",
     "room": "G303",
-    "teacher": "教師未定 ",
+    "teacher": "黃暐超 ",
     "english": false,
     "type": 0
   },
@@ -10135,7 +10159,7 @@
     "area": "博愛",
     "time": "W3W4",
     "room": "G302",
-    "teacher": "教師未定 ",
+    "teacher": "鄧慧文 ",
     "english": false,
     "type": 0
   },
@@ -10517,8 +10541,8 @@
     "credit": "2.0",
     "field": "系定必修",
     "area": "博愛",
-    "time": "MbMc",
-    "room": "G522電腦教室",
+    "time": "MbMcMdMe",
+    "room": "G512電腦教室",
     "teacher": "游錦雲 ",
     "english": false,
     "type": 1
@@ -10529,9 +10553,9 @@
     "credit": "2.0",
     "field": "系定選修",
     "area": "博愛",
-    "time": "MdMe",
-    "room": "C305",
-    "teacher": "李明晉 ",
+    "time": "",
+    "room": "",
+    "teacher": "、11-14",
     "english": false,
     "type": 0
   },
@@ -10541,7 +10565,7 @@
     "credit": "2.0",
     "field": "系定選修",
     "area": "博愛",
-    "time": "RbRc",
+    "time": "RbRcRdRe",
     "room": "G303",
     "teacher": "莊季靜 ",
     "english": false,
@@ -10553,7 +10577,7 @@
     "credit": "2.0",
     "field": "系定選修",
     "area": "博愛",
-    "time": "TbTc",
+    "time": "TbTcTdTe",
     "room": "G303",
     "teacher": "林蔚芳 ",
     "english": false,
@@ -10565,9 +10589,9 @@
     "credit": "2.0",
     "field": "系定選修",
     "area": "博愛",
-    "time": "RdRe",
-    "room": "C305",
-    "teacher": "莊雅婷 ",
+    "time": "",
+    "room": "",
+    "teacher": "、11-14",
     "english": false,
     "type": 0
   },
@@ -10577,15 +10601,15 @@
     "credit": "0",
     "field": "共同必修",
     "area": "博愛",
-    "time": "",
-    "room": "教室未定",
-    "teacher": "教師未定 、劉宇陽 ",
+    "time": "T6T7",
+    "room": "G424",
+    "teacher": "劉宇陽 ",
     "english": false,
     "type": 1
   },
   "11220750010540": {
     "id": "11220750010540",
-    "name": "媒材實作 I(停開)",
+    "name": "媒材實作 I",
     "credit": "1.0",
     "field": "系定必修",
     "area": "博愛",
@@ -10753,7 +10777,7 @@
   },
   "11220750013058": {
     "id": "11220750013058",
-    "name": "媒材實作 I",
+    "name": "媒材實作 I(停開)",
     "credit": "1.0",
     "field": "系定選修",
     "area": "博愛",
@@ -10837,7 +10861,7 @@
   },
   "11220750021567": {
     "id": "11220750021567",
-    "name": "繪本與學習媒材",
+    "name": "繪本與學習媒材(停開)",
     "credit": "2.0",
     "field": "系定選修",
     "area": "博愛",
@@ -11130,7 +11154,7 @@
     "field": "共同必修",
     "area": "博愛",
     "time": "T6T7",
-    "room": "G521電腦教室",
+    "room": "G419",
     "teacher": "葉興華 ",
     "english": false,
     "type": 1
@@ -11191,7 +11215,7 @@
     "area": "博愛",
     "time": "",
     "room": "",
-    "teacher": "方志華 ",
+    "teacher": "高翠霞 ",
     "english": false,
     "type": 1
   },
@@ -11521,7 +11545,7 @@
   },
   "11220750063269": {
     "id": "11220750063269",
-    "name": "碩士論文",
+    "name": "碩士論文(停開)",
     "credit": "2.0",
     "field": "系定必修",
     "area": "博愛",
@@ -11933,9 +11957,9 @@
     "credit": "2.0",
     "field": "系定選修",
     "area": "博愛",
-    "time": "",
-    "room": "",
-    "teacher": "、11-14",
+    "time": "MbMcMdMe",
+    "room": "G402",
+    "teacher": "鍾德馨 ",
     "english": false,
     "type": 0
   },
@@ -11971,7 +11995,7 @@
     "area": "博愛",
     "time": "",
     "room": "",
-    "teacher": "、10",
+    "teacher": "方志華 ",
     "english": false,
     "type": 1
   },
@@ -12019,7 +12043,7 @@
     "area": "博愛",
     "time": "",
     "room": "",
-    "teacher": "教師未定 、教師未定 ",
+    "teacher": "林吟霞 、邱世明 ",
     "english": false,
     "type": 0
   },
@@ -12533,7 +12557,7 @@
     "credit": "2.0",
     "field": "系定選修",
     "area": "天母",
-    "time": "T8T9",
+    "time": "T3T4",
     "room": "C309a規畫教室",
     "teacher": "王冠斐 ",
     "english": false,
@@ -14311,7 +14335,7 @@
     "area": "天母",
     "time": "",
     "room": "",
-    "teacher": "教師未定 8、8-9",
+    "teacher": "許哲彬 ",
     "english": false,
     "type": 1
   },
@@ -14779,7 +14803,7 @@
     "area": "天母",
     "time": "",
     "room": "",
-    "teacher": "教師未定 3、3-4",
+    "teacher": "王如萍 ",
     "english": false,
     "type": 0
   },
@@ -14803,7 +14827,7 @@
     "area": "天母",
     "time": "",
     "room": "",
-    "teacher": "林惟華 ",
+    "teacher": "沈怡彣 ",
     "english": false,
     "type": 0
   },
@@ -14815,7 +14839,7 @@
     "area": "天母",
     "time": "",
     "room": "",
-    "teacher": "教師未定 6、6-7",
+    "teacher": "林惟華 ",
     "english": false,
     "type": 0
   },
@@ -14849,9 +14873,9 @@
     "credit": "1.0",
     "field": "系定選修(術科)",
     "area": "天母",
-    "time": "",
-    "room": "",
-    "teacher": "教師未定 3、3-4",
+    "time": "T3T4",
+    "room": "B320 （舞蹈教室4）",
+    "teacher": "賴姿伊 ",
     "english": false,
     "type": 0
   },
@@ -14861,9 +14885,9 @@
     "credit": "1.0",
     "field": "系定必修(學科)",
     "area": "天母",
-    "time": "",
-    "room": "",
-    "teacher": "教師未定 、廖抱一 8",
+    "time": "R8R9",
+    "room": "B520（25人）",
+    "teacher": "廖抱一 ",
     "english": false,
     "type": 1
   },
@@ -14873,9 +14897,9 @@
     "credit": "3.0",
     "field": "系定選修(學科)",
     "area": "天母",
-    "time": "",
-    "room": "",
-    "teacher": "教師未定 、吳怡瑢 5",
+    "time": "W5W6W7",
+    "room": "B520（25人）",
+    "teacher": "吳怡瑢 ",
     "english": false,
     "type": 0
   },
@@ -14885,9 +14909,9 @@
     "credit": "2.0",
     "field": "系定選修(學科)",
     "area": "天母",
-    "time": "",
-    "room": "",
-    "teacher": "教師未定 、吳怡瑢 3",
+    "time": "R3R4",
+    "room": "B305（舞蹈教室1）",
+    "teacher": "吳怡瑢 ",
     "english": false,
     "type": 0
   },
@@ -14897,9 +14921,9 @@
     "credit": "2.0",
     "field": "系定選修(學科)",
     "area": "天母",
-    "time": "",
-    "room": "",
-    "teacher": "教師未定 、廖抱一 6",
+    "time": "R6R7",
+    "room": "B520（25人）",
+    "teacher": "廖抱一 ",
     "english": false,
     "type": 0
   },
@@ -14911,7 +14935,7 @@
     "area": "天母",
     "time": "",
     "room": "",
-    "teacher": "教師未定 、余彥芳 3",
+    "teacher": "余彥芳 ",
     "english": false,
     "type": 0
   },
@@ -15572,18 +15596,6 @@
     "time": "T8T9",
     "room": "C412",
     "teacher": "許琇禎 ",
-    "english": false,
-    "type": 0
-  },
-  "11220790032369": {
-    "id": "11220790032369",
-    "name": "詩經選讀-雅頌選讀",
-    "credit": "2.0",
-    "field": "系定選修",
-    "area": "博愛",
-    "time": "W8W9",
-    "room": "C412",
-    "teacher": "張曉生 ",
     "english": false,
     "type": 0
   },
@@ -17273,7 +17285,7 @@
     "credit": "2.0",
     "field": "系定必修",
     "area": "博愛",
-    "time": "T3T4",
+    "time": "W3W4",
     "room": "A401",
     "teacher": "江佳穎 ",
     "english": false,
@@ -17297,7 +17309,7 @@
     "credit": "2.0",
     "field": "分組必修",
     "area": "博愛",
-    "time": "R8R9",
+    "time": "R6R7",
     "room": "G521電腦教室",
     "teacher": "白偉毅 ",
     "english": false,
@@ -17711,6 +17723,18 @@
     "english": false,
     "type": 1
   },
+  "11220820013157": {
+    "id": "11220820013157",
+    "name": "專題研究",
+    "credit": "2.0",
+    "field": "分組必修",
+    "area": "博愛",
+    "time": "W5",
+    "room": "A101沈珍伶 ",
+    "teacher": "廖培鈞 、歐玲如 ",
+    "english": false,
+    "type": 1
+  },
   "11220820013158": {
     "id": "11220820013158",
     "name": "管樂合奏（二）",
@@ -17754,8 +17778,8 @@
     "field": "分組必修",
     "area": "博愛",
     "time": "F5",
-    "room": "A402",
-    "teacher": "吳瑋芸 、聶中興 ",
+    "room": "M102",
+    "teacher": "聶中興 、陳哲輝 ",
     "english": false,
     "type": 1
   },
@@ -17969,7 +17993,7 @@
     "credit": "2.0",
     "field": "分組必修",
     "area": "博愛",
-    "time": "T8T9",
+    "time": "F8F9",
     "room": "A101",
     "teacher": "郭芳玲 ",
     "english": false,
@@ -18546,8 +18570,8 @@
     "field": "分組必修",
     "area": "博愛",
     "time": "F5",
-    "room": "A402",
-    "teacher": "吳瑋芸 、聶中興 ",
+    "room": "M102",
+    "teacher": "聶中興 、陳哲輝 ",
     "english": false,
     "type": 1
   },
@@ -18559,7 +18583,7 @@
     "area": "博愛",
     "time": "",
     "room": "",
-    "teacher": "",
+    "teacher": "郭曉玲時間未定",
     "english": false,
     "type": 1
   },
@@ -18569,7 +18593,7 @@
     "credit": "2.0",
     "field": "分組必修",
     "area": "博愛",
-    "time": "T8T9",
+    "time": "F8F9",
     "room": "A101",
     "teacher": "郭芳玲 ",
     "english": false,
@@ -18775,7 +18799,7 @@
     "area": "博愛",
     "time": "",
     "room": "",
-    "teacher": "",
+    "teacher": "鄭伊晴 、",
     "english": false,
     "type": 1
   },
@@ -18810,7 +18834,7 @@
     "field": "系定必修",
     "area": "博愛",
     "time": "W6W7",
-    "room": "A302",
+    "room": "A402",
     "teacher": "許瑞坤 ",
     "english": false,
     "type": 1
@@ -19350,8 +19374,8 @@
     "field": "分組必修",
     "area": "博愛",
     "time": "F5",
-    "room": "A402",
-    "teacher": "吳瑋芸 、聶中興 ",
+    "room": "M102",
+    "teacher": "聶中興 、陳哲輝 ",
     "english": false,
     "type": 1
   },
@@ -19366,6 +19390,18 @@
     "teacher": "傅上珍時間未定",
     "english": false,
     "type": 0
+  },
+  "11220820040722": {
+    "id": "11220820040722",
+    "name": "弦樂教學法",
+    "credit": "2.0",
+    "field": "分組必修",
+    "area": "博愛",
+    "time": "",
+    "room": "",
+    "teacher": "鄭伊晴 、",
+    "english": false,
+    "type": 1
   },
   "11220820040724": {
     "id": "11220820040724",
@@ -20010,8 +20046,8 @@
     "field": "分組必修",
     "area": "博愛",
     "time": "F5",
-    "room": "A402",
-    "teacher": "吳瑋芸 、聶中興 ",
+    "room": "M102",
+    "teacher": "聶中興 、陳哲輝 ",
     "english": false,
     "type": 1
   },
@@ -20105,7 +20141,7 @@
     "credit": "2.0",
     "field": "分組必修",
     "area": "博愛",
-    "time": "T8T9",
+    "time": "W6W7",
     "room": "A401",
     "teacher": "黃郁婷 ",
     "english": false,
@@ -20233,7 +20269,7 @@
   },
   "11220820050780": {
     "id": "11220820050780",
-    "name": "指揮實習（二）",
+    "name": "指揮實習（四）",
     "credit": "2.0",
     "field": "分組必修",
     "area": "博愛",
@@ -20442,8 +20478,8 @@
     "field": "分組必修",
     "area": "博愛",
     "time": "F5",
-    "room": "A402",
-    "teacher": "吳瑋芸 、聶中興 ",
+    "room": "M102",
+    "teacher": "聶中興 、陳哲輝 ",
     "english": false,
     "type": 1
   },
@@ -20459,6 +20495,42 @@
     "english": false,
     "type": 1
   },
+  "11220820060766": {
+    "id": "11220820060766",
+    "name": "後調性樂曲分析與詮釋",
+    "credit": "2.0",
+    "field": "分組必修",
+    "area": "博愛",
+    "time": "R6R7",
+    "room": "A401",
+    "teacher": "江佳穎 ",
+    "english": false,
+    "type": 1
+  },
+  "11220820060774": {
+    "id": "11220820060774",
+    "name": "現代樂器演奏技巧與創作",
+    "credit": "2.0",
+    "field": "分組必修",
+    "area": "博愛",
+    "time": "R3R4",
+    "room": "A416",
+    "teacher": "潘家琳 ",
+    "english": false,
+    "type": 1
+  },
+  "11220820060778": {
+    "id": "11220820060778",
+    "name": "專題研究（二）",
+    "credit": "2.0",
+    "field": "分組必修",
+    "area": "博愛",
+    "time": "W5",
+    "room": "M419沈珍伶 ",
+    "teacher": "廖培鈞 、歐玲如 ",
+    "english": false,
+    "type": 1
+  },
   "11220820060781": {
     "id": "11220820060781",
     "name": "樂團片段演奏實務－管樂",
@@ -20468,6 +20540,18 @@
     "time": "",
     "room": "",
     "teacher": "林昭成 、鐘可欣 ",
+    "english": false,
+    "type": 1
+  },
+  "11220820060782": {
+    "id": "11220820060782",
+    "name": "藝術歌曲研究（一）",
+    "credit": "2.0",
+    "field": "分組必修",
+    "area": "博愛",
+    "time": "M6M7",
+    "room": "A401",
+    "teacher": "戴旖旎 ",
     "english": false,
     "type": 1
   },
@@ -20670,8 +20754,8 @@
     "field": "分組必修",
     "area": "博愛",
     "time": "F5",
-    "room": "A402",
-    "teacher": "吳瑋芸 、聶中興 ",
+    "room": "M102",
+    "teacher": "聶中興 、陳哲輝 ",
     "english": false,
     "type": 1
   },
@@ -22535,18 +22619,6 @@
     "english": false,
     "type": 1
   },
-  "11220840030837": {
-    "id": "11220840030837",
-    "name": "畢業公演",
-    "credit": "0",
-    "field": "系定必修",
-    "area": "博愛",
-    "time": "R6R7",
-    "room": "C616",
-    "teacher": "李顯德 ",
-    "english": false,
-    "type": 1
-  },
   "11220840032398": {
     "id": "11220840032398",
     "name": "讀寫教學探究",
@@ -22594,6 +22666,18 @@
     "teacher": "李顯德 ",
     "english": false,
     "type": 1
+  },
+  "11220840033278": {
+    "id": "11220840033278",
+    "name": "英語表演藝術",
+    "credit": "2.0",
+    "field": "系定選修",
+    "area": "博愛",
+    "time": "R6R7",
+    "room": "C616",
+    "teacher": "李顯德 ",
+    "english": false,
+    "type": 0
   },
   "11220840040838": {
     "id": "11220840040838",
@@ -23183,6 +23267,18 @@
     "english": false,
     "type": 0
   },
+  "11220850023279": {
+    "id": "11220850023279",
+    "name": "都市社會學",
+    "credit": "2.0",
+    "field": "系定選修",
+    "area": "博愛",
+    "time": "W8W9",
+    "room": "C506",
+    "teacher": "教師未定 ",
+    "english": false,
+    "type": 0
+  },
   "11220850030853": {
     "id": "11220850030853",
     "name": "大學生活學習與輔導",
@@ -23429,9 +23525,9 @@
     "credit": "2.0",
     "field": "系定選修",
     "area": "博愛",
-    "time": "",
-    "room": "",
-    "teacher": "李俊達 、李天申 ",
+    "time": "R8R9",
+    "room": "C610",
+    "teacher": "李天申 ",
     "english": false,
     "type": 0
   },
@@ -23444,6 +23540,18 @@
     "time": "W6W7",
     "room": "C610",
     "teacher": "高光義 ",
+    "english": false,
+    "type": 0
+  },
+  "11220850053280": {
+    "id": "11220850053280",
+    "name": "府際與跨域關係",
+    "credit": "2.0",
+    "field": "系定選修",
+    "area": "博愛",
+    "time": "T3T4",
+    "room": "C610",
+    "teacher": "教師未定 ",
     "english": false,
     "type": 0
   },
@@ -23513,9 +23621,9 @@
     "credit": "2.0",
     "field": "系定選修",
     "area": "博愛",
-    "time": "",
-    "room": "",
-    "teacher": "李俊達 、李天申 ",
+    "time": "R8R9",
+    "room": "C610",
+    "teacher": "李天申 ",
     "english": false,
     "type": 0
   },
@@ -23626,6 +23734,18 @@
     "teacher": "李天申時間未定",
     "english": false,
     "type": 1
+  },
+  "11220850063280": {
+    "id": "11220850063280",
+    "name": "府際與跨域關係",
+    "credit": "2.0",
+    "field": "系定選修",
+    "area": "博愛",
+    "time": "T3T4",
+    "room": "C610",
+    "teacher": "教師未定 ",
+    "english": false,
+    "type": 0
   },
   "11220880050864": {
     "id": "11220880050864",
@@ -24358,6 +24478,18 @@
     "teacher": "陳哲輝時間未定",
     "english": false,
     "type": 1
+  },
+  "11220963483191": {
+    "id": "11220963483191",
+    "name": "音樂教育心理學",
+    "credit": "2.0",
+    "field": "分組選修",
+    "area": "博愛",
+    "time": "WaWbWcWd",
+    "room": "A302",
+    "teacher": "林小玉 ",
+    "english": false,
+    "type": 0
   },
   "11220963483192": {
     "id": "11220963483192",
@@ -26153,8 +26285,8 @@
     "credit": "2.0",
     "field": "系定選修(學科)",
     "area": "天母",
-    "time": "F3F4",
-    "room": "B717  球一誠（70人）",
+    "time": "M3M4",
+    "room": "B721  球二忠（70人）",
     "teacher": "薛名淳 ",
     "english": false,
     "type": 0
@@ -28038,7 +28170,7 @@
     "field": "系定必修(學科)",
     "area": "天母",
     "time": "W1W2",
-    "room": "B207（50人）",
+    "room": "C507階梯教室",
     "teacher": "李麗晶 ",
     "english": false,
     "type": 1
@@ -29905,11 +30037,11 @@
   },
   "11220600052510": {
     "id": "11220600052510",
-    "name": "運動教具與遊戲器材專題",
+    "name": "產品打樣與量產專題",
     "credit": "3.0",
     "field": "系定選修",
     "area": "天母",
-    "time": "WbWcWd",
+    "time": "S2S3S4",
     "room": "D607",
     "teacher": "何維華 ",
     "english": false,
@@ -29945,8 +30077,8 @@
     "credit": "3.0",
     "field": "系定選修",
     "area": "天母",
-    "time": "W2W3W4",
-    "room": "D607",
+    "time": "R2R3R4",
+    "room": "D609",
     "teacher": "陳億成 ",
     "english": false,
     "type": 0
@@ -29969,8 +30101,8 @@
     "credit": "3.0",
     "field": "系定選修",
     "area": "天母",
-    "time": "R2R3R4",
-    "room": "D609",
+    "time": "W2W3W4",
+    "room": "D607",
     "teacher": "陳億成 ",
     "english": false,
     "type": 0
@@ -31369,7 +31501,7 @@
   },
   "11220660022815": {
     "id": "11220660022815",
-    "name": "表演訓練（二）",
+    "name": "表演訓練（二）(停開)",
     "credit": "1.0",
     "field": "系定選修(術科)",
     "area": "天母",
@@ -31637,9 +31769,9 @@
     "credit": "2.0",
     "field": "系定選修(學科)",
     "area": "天母",
-    "time": "F6F7",
+    "time": "F1F2",
     "room": "C613階梯教室",
-    "teacher": "各教師 ",
+    "teacher": "傅思凱 ",
     "english": false,
     "type": 0
   },
@@ -31675,7 +31807,7 @@
     "area": "天母",
     "time": "W3W4",
     "room": "C613階梯教室",
-    "teacher": "各教師 ",
+    "teacher": "傅思凱 ",
     "english": false,
     "type": 0
   },
@@ -32058,7 +32190,7 @@
     "field": "系定選修(學科)",
     "area": "天母",
     "time": "F1F2",
-    "room": "C613階梯教室",
+    "room": "C611階梯教室",
     "teacher": "梁雅惠 、賴建仲 ",
     "english": false,
     "type": 0
@@ -32081,9 +32213,9 @@
     "credit": "2.0",
     "field": "系定選修(學科)",
     "area": "天母",
-    "time": "M1M2",
-    "room": "C507階梯教室",
-    "teacher": "各教師 ",
+    "time": "R1R2",
+    "room": "C509階梯教室",
+    "teacher": "傅思凱 ",
     "english": false,
     "type": 0
   },
@@ -32095,7 +32227,7 @@
     "area": "天母",
     "time": "S3S4",
     "room": "B808  運健三（70人）",
-    "teacher": "各教師 、曾國維 ",
+    "teacher": "傅思凱 、曾國維 ",
     "english": false,
     "type": 1
   },
@@ -32310,7 +32442,7 @@
     "field": "英文類",
     "area": "博愛",
     "time": "W1W2",
-    "room": "教室未定",
+    "room": "C607",
     "teacher": "陳郁菁 ",
     "english": false,
     "type": 1
@@ -32358,7 +32490,7 @@
     "field": "英文類",
     "area": "博愛",
     "time": "W3W4",
-    "room": "教室未定",
+    "room": "C607",
     "teacher": "陳怡蒨 ",
     "english": false,
     "type": 1
@@ -32538,7 +32670,7 @@
     "field": "國文類",
     "area": "博愛",
     "time": "W1W2",
-    "room": "教室未定",
+    "room": "C215",
     "teacher": "姜義泰 ",
     "english": false,
     "type": 1
@@ -32658,7 +32790,7 @@
     "field": "自然、生命與科技領域",
     "area": "博愛",
     "time": "W3W4",
-    "room": "G314",
+    "room": "AB04",
     "teacher": "林奎輝 ",
     "english": false,
     "type": 0
@@ -32742,7 +32874,7 @@
     "field": "自然、生命與科技領域",
     "area": "博愛",
     "time": "W3W4",
-    "room": "教室未定",
+    "room": "G314",
     "teacher": "李孟陽 ",
     "english": false,
     "type": 0
@@ -32898,7 +33030,7 @@
     "field": "共同選修",
     "area": "博愛",
     "time": "F3F4",
-    "room": "教室未定",
+    "room": "C607",
     "teacher": "何美靜 ",
     "english": false,
     "type": 0
@@ -33210,7 +33342,7 @@
     "field": "公民素養與社會探索領域",
     "area": "博愛",
     "time": "F1F2",
-    "room": "教室未定",
+    "room": "G302",
     "teacher": "李佳容 ",
     "english": false,
     "type": 0
@@ -33282,7 +33414,7 @@
     "field": "公民素養與社會探索領域",
     "area": "博愛",
     "time": "F3F4",
-    "room": "教室未定",
+    "room": "G302",
     "teacher": "李佳容 ",
     "english": false,
     "type": 0
@@ -33318,7 +33450,7 @@
     "field": "公民素養與社會探索領域",
     "area": "博愛",
     "time": "M3M4",
-    "room": "教室未定",
+    "room": "G302",
     "teacher": "廖世机 ",
     "english": false,
     "type": 0
@@ -33397,7 +33529,7 @@
   },
   "11220XS0013144": {
     "id": "11220XS0013144",
-    "name": "西班牙語 (一)",
+    "name": "西班牙語(一)",
     "credit": "2.0",
     "field": "共同選修",
     "area": "博愛",
@@ -33414,7 +33546,7 @@
     "field": "自然、生命與科技領域",
     "area": "博愛",
     "time": "M1M2",
-    "room": "教室未定",
+    "room": "G302",
     "teacher": "各教師 ",
     "english": false,
     "type": 0
@@ -33582,7 +33714,7 @@
     "field": "公民素養與社會探索領域",
     "area": "博愛",
     "time": "F1F2",
-    "room": "教室未定",
+    "room": "C616",
     "teacher": "林育鴻 ",
     "english": false,
     "type": 0
@@ -33642,7 +33774,7 @@
     "field": "公民素養與社會探索領域",
     "area": "博愛",
     "time": "",
-    "room": "教室未定",
+    "room": "C616",
     "teacher": "各教師 、林育鴻 ",
     "english": false,
     "type": 0
@@ -33654,7 +33786,7 @@
     "field": "英文類",
     "area": "博愛",
     "time": "W3W4",
-    "room": "教室未定",
+    "room": "C215",
     "teacher": "莊季靜 ",
     "english": false,
     "type": 1
@@ -33678,7 +33810,7 @@
     "field": "英文類",
     "area": "博愛",
     "time": "F3F4",
-    "room": "教室未定",
+    "room": "C608",
     "teacher": "賴雅俐 ",
     "english": false,
     "type": 1
