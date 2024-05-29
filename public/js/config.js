@@ -46,9 +46,9 @@ const COURSE_TYPE = ["選修", "必修", "通識"];
 const BERIEF_CODE = [];
 const FIND_COURSE_RESULT_LIMIT = 75;
 
-const YEAR = "112",
-  SEMESTER = "20",
-  SEMESTER_SINGLE = "2";
+const YEAR = "113",
+  SEMESTER = "10",
+  SEMESTER_SINGLE = "1";
 
 const APP_URL = `${location.protocol}//${location.host}${location.pathname}`;
 const YS = YEAR + SEMESTER;
