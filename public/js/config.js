@@ -47,8 +47,8 @@ const BERIEF_CODE = [];
 const FIND_COURSE_RESULT_LIMIT = 75;
 
 const YEAR = "113",
-  SEMESTER = "10",
-  SEMESTER_SINGLE = "1";
+  SEMESTER = "20",
+  SEMESTER_SINGLE = "2";
 
 const APP_URL = `${location.protocol}//${location.host}${location.pathname}`;
 const YS = YEAR + SEMESTER;
