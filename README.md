@@ -1,25 +1,32 @@
-# *UtaipeiwU*
+# *U*taipei*wU*
+
 北市大選課模擬器 / utaipei course selection simulator.
 
 修改自 NTH*Uw*U
 
 ## Feature
+
 - 基本模擬排課
 - 將課表輸出為圖片
 - 分享/匯入課表
-- 使用 Google OAuth 登入
+- 使用 Google OAuth 登入(由於許多瀏覽器均不再支援跨來源重新導向登入功能，因此目前無法使用，詳細資訊請參閱[這裡](https://firebase.google.com/docs/auth/web/redirect-best-practices?hl=zh&authuser=0))
 
-## How to Fork
+## 開發
 
-### TL;DR
-建議使用 [standalone](https://github.com/splitline/NCTUwU/tree/standalone) branch 修改。
+### 爬蟲
 
-### 細節
-該 branch 中是單機版的選課模擬器，包含了最基礎的功能，理論上通用於各大學校的課程查詢。
+這個專案使用 poetry。它是一個現代的依賴管理工具。
 
-你需要做的事：
-- 修改 `config.js` 裡的 `TIME_MAPPING`。
-- 自己把課程抓下來放在 `course-data/` 裡。
-- 修改 `parseTime`。
-- 其他看你要改什麼吧！
+要在本機運行專案，請使用以下命令：  
+（你需要先在電腦上裝好 poetry）
 
+```bash
+poetry config virtualenvs.path .venv
+poetry config virtualenvs.in-project true  
+poetry install
+poetry run python -m course_crawler
+```
+
+### 前端
+
+這是一個純靜態 HTML + JS + CSS 專案，可以直接進行開發。
