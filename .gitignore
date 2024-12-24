@@ -6,3 +6,4 @@ database-debug.log
 firebase-debug.log
 .history
 .venv
+__pycache__
