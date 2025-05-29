@@ -25,8 +25,8 @@ from course_crawler.utils.constant import (
 
 class Crawler:
     def __init__(self):
-        self.year = "113"
-        self.semester = "2"
+        self.year = "114"
+        self.semester = "1"
         self.courses = {}
 
     async def run(self) -> None:
@@ -146,7 +146,7 @@ class Crawler:
             room = match2.group("room").strip("()（）")
 
         course = Course(
-            id=prefix + course_data["選課代碼"],
+            id=prefix + str(course_data["選課代碼"]),
             name=course_data["科目"],
             credit=course_data["學分"],
             field=course_data["領域類"],
